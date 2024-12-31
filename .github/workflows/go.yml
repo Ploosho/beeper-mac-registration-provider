@@ -24,7 +24,7 @@ jobs:
         run: MACOSX_DEPLOYMENT_TARGET=11.0 go build -v -ldflags "-X main.Commit=${{ github.sha }}"
 
       - name: Run the binary
-        run: ./mac-registration-provider -once
+        run: ./mac-registration-provider
 
       - name: Install lint dependencies
         run: |
@@ -42,7 +42,7 @@ jobs:
           if-no-files-found: error
 
   build-x86:
-    runs-on: macos-14-large
+    runs-on: macos-13
 
     steps:
       - uses: actions/checkout@v4
