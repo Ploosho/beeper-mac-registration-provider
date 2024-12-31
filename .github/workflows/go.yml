@@ -42,7 +42,7 @@ jobs:
           if-no-files-found: error
 
   build-x86:
-    runs-on: macos-13
+    runs-on: macos-14-large
 
     steps:
       - uses: actions/checkout@v4
@@ -57,7 +57,7 @@ jobs:
         run: MACOSX_DEPLOYMENT_TARGET=10.13 go build -v -ldflags "-X main.Commit=${{ github.sha }}"
 
       - name: Run the binary
-        run: ./mac-registration-provider -once
+        run: ./mac-registration-provider
 
       - uses: actions/upload-artifact@v4
         with:
